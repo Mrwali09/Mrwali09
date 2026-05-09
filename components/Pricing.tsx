@@ -1,3 +1,8 @@
+type PricingProps = {
+  selectedPackage: string;
+  onSelectPackage: (planName: string) => void;
+};
+
 const plans = [
   {
     name: "Starter Plan",
@@ -23,9 +28,9 @@ const plans = [
   },
 ];
 
-export default function Pricing() {
+export default function Pricing({ selectedPackage, onSelectPackage }: PricingProps) {
   return (
-    <section id="packages" className="bg-[#121212] py-16 text-white md:py-24">
+    <section id="packages" className="scroll-mt-24 bg-[#121212] py-16 text-white md:py-24">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-[var(--font-sora)] text-3xl font-bold tracking-tight sm:text-4xl">Choose the Right Growth Package</h2>
@@ -34,14 +39,13 @@ export default function Pricing() {
         <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3 lg:items-end">
           {plans.map((plan) => {
             const growth = plan.name === "Growth Plan";
+            const selected = selectedPackage === plan.name;
             return (
               <article
                 key={plan.name}
                 className={`rounded-[24px] border p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl ${
-                  growth
-                    ? "scale-[1.05] border-[#128C7E]/70 bg-white/10 lg:scale-110"
-                    : "border-white/15 bg-white/5"
-                }`}
+                  growth ? "scale-[1.05] border-[#128C7E]/70 bg-white/10 lg:scale-110" : "border-white/15 bg-white/5"
+                } ${selected ? "ring-2 ring-[#128C7E]" : ""}`}
               >
                 {plan.badge ? (
                   <span className="mb-3 inline-flex rounded-full border border-[#C5A059]/70 bg-[#C5A059]/15 px-3 py-1 text-xs font-semibold text-[#E9D2A2]">
@@ -60,14 +64,13 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="https://wa.me/919999999999"
-                  target="_blank"
-                  rel="noreferrer"
+                <button
+                  type="button"
+                  onClick={() => onSelectPackage(plan.name)}
                   className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#128C7E] px-5 text-sm font-semibold text-white shadow-[0_6px_0_#0E6E65] transition hover:-translate-y-0.5 active:translate-y-[2px] active:shadow-[0_3px_0_#0E6E65]"
                 >
                   Choose {plan.name}
-                </a>
+                </button>
               </article>
             );
           })}
