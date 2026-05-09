@@ -8,7 +8,7 @@ const flowItems = [
 
 export default function Ecosystem() {
   return (
-    <section id="services" className="bg-[#FAFAFA] py-16 md:py-24">
+    <section id="ecosystem" className="scroll-mt-24 bg-[#FAFAFA] py-16 md:py-24">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-[var(--font-sora)] text-3xl font-bold tracking-tight text-[#121212] sm:text-4xl">

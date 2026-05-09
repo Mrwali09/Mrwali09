@@ -25,7 +25,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="packages" className="bg-[#121212] py-16 text-white md:py-24">
+    <section id="packages" className="scroll-mt-24 bg-[#121212] py-16 text-white md:py-24">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-[var(--font-sora)] text-3xl font-bold tracking-tight sm:text-4xl">Choose the Right Growth Package</h2>
