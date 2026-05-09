@@ -12,7 +12,8 @@ export default function Navbar() {
     <>
       <header className="sticky top-0 z-40 hidden border-b border-[#E5E7EB]/80 bg-[#FAFAFA]/95 backdrop-blur md:block">
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-          <a href="#" className="font-[var(--font-sora)] text-lg font-extrabold tracking-tight lg:text-xl">
+          <a href="#" className="flex items-center gap-2 font-[var(--font-sora)] text-lg font-extrabold tracking-tight lg:text-xl">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[#121212] text-white">WG</span>
             Web & Growth Solutions
           </a>
 
