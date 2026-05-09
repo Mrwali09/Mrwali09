@@ -1,3 +1,7 @@
+type PricingProps = {
+  onSelectPackage: (pkg: string) => void;
+};
+
 const plans = [
   {
     name: "Starter Plan",
@@ -23,7 +27,7 @@ const plans = [
   },
 ];
 
-export default function Pricing() {
+export default function Pricing({ onSelectPackage }: PricingProps) {
   return (
     <section id="packages" className="scroll-mt-24 bg-[#121212] py-16 text-white md:py-24">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -35,39 +39,14 @@ export default function Pricing() {
           {plans.map((plan) => {
             const growth = plan.name === "Growth Plan";
             return (
-              <article
-                key={plan.name}
-                className={`rounded-[24px] border p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl ${
-                  growth
-                    ? "scale-[1.05] border-[#128C7E]/70 bg-white/10 lg:scale-110"
-                    : "border-white/15 bg-white/5"
-                }`}
-              >
-                {plan.badge ? (
-                  <span className="mb-3 inline-flex rounded-full border border-[#C5A059]/70 bg-[#C5A059]/15 px-3 py-1 text-xs font-semibold text-[#E9D2A2]">
-                    {plan.badge}
-                  </span>
-                ) : null}
+              <article key={plan.name} className={`rounded-[24px] border p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)] ${growth ? "scale-[1.04] border-[#128C7E]/70 bg-white/10 lg:scale-110" : "border-white/15 bg-white/5"}`}>
+                {plan.badge ? <span className="mb-3 inline-flex rounded-full border border-[#C5A059]/70 bg-[#C5A059]/15 px-3 py-1 text-xs font-semibold text-[#E9D2A2]">{plan.badge}</span> : null}
                 <h3 className="font-[var(--font-sora)] text-2xl font-bold">{plan.name}</h3>
                 <p className="mt-2 text-lg font-semibold text-white">{plan.price}</p>
                 <p className="mt-2 text-sm font-semibold text-[#D0D5DD]">{plan.line}</p>
                 <p className="mt-3 text-sm text-[#EAECF0]">{plan.copy}</p>
-                <ul className="mt-5 space-y-2 text-sm text-[#F2F4F7]">
-                  {plan.includes.map((item) => (
-                    <li key={item} className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#128C7E]" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="https://wa.me/919999999999"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#128C7E] px-5 text-sm font-semibold text-white shadow-[0_6px_0_#0E6E65] transition hover:-translate-y-0.5 active:translate-y-[2px] active:shadow-[0_3px_0_#0E6E65]"
-                >
-                  Choose {plan.name}
-                </a>
+                <ul className="mt-5 space-y-2 text-sm text-[#F2F4F7]">{plan.includes.map((item) => <li key={item} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#128C7E]" />{item}</li>)}</ul>
+                <a href="#lead-form" onClick={() => onSelectPackage(plan.name)} className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#128C7E] px-5 text-sm font-semibold text-white shadow-[0_6px_0_#0E6E65] transition hover:-translate-y-0.5 active:translate-y-[2px] active:shadow-[0_3px_0_#0E6E65]">Choose {plan.name}</a>
               </article>
             );
           })}
