@@ -1,6 +1,11 @@
+import Calculator from "@/components/Calculator";
+import Ecosystem from "@/components/Ecosystem";
+import FAQ from "@/components/FAQ";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import Pricing from "@/components/Pricing";
+import Services from "@/components/Services";
 
 export default function Home() {
   return (
@@ -8,6 +13,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Ecosystem />
+        <Services />
+        <Pricing />
+        <Calculator />
+        <FAQ />
       </main>
       <FloatingWhatsApp />
     </div>
